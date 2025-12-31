@@ -1,31 +1,329 @@
-<HTML>
-<HEAD>
-<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
-<META NAME="Generator" CONTENT="Microsoft Word 97">
-<TITLE>win32com</TITLE>
-<META NAME="Template" CONTENT="C:\Program Files\Microsoft Office\Office\html.dot">
-</HEAD>
-<BODY TEXT="#000000" LINK="#0000ff" VLINK="#0000ff">
-<DIR>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Reset Auto Details | Mobile Detailing</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<P><!-- Enclose the entire page in UL, so bullets don't indent. --></P>
-<H1><IMG SRC="image/pycom_blowing.gif" WIDTH=549 HEIGHT=99></H1>
-<H2>Python and COM</H2>
-<H3>Introduction</H3>
-<P>Python has an excellent interface to COM (also known variously as OLE2, ActiveX, etc).</P>
-<P>The Python COM package can be used to interface to almost any COM program (such as the MS-Office suite), write servers that can be hosted by any COM client (such as Visual Basic or C++), and has even been used to provide the core ActiveX Scripting Support. </P>
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700&display=swap" rel="stylesheet">
 
+  <style>
+    :root {
+      --black: #0b0b0b;
+      --red: #c1121f;
+      --white: #f5f5f5;
+      --gray: #b1b1b1;
+    }
 
-<UL>
-<LI>Note that win32com is now released in the win32all installation package. The <A HREF="../win32all/win32all.exe">installation EXE can be downloaded</A>, or you <A HREF="../win32all/">can jump to the win32all readme</A> for more details. </LI>
-<LI>Here is the <A HREF="win32com_src.zip">win32com source code</A> in a zip file. </LI></UL>
-</DIR>
-<DIR>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Montserrat', sans-serif;
+    }
 
-<H3>Documentation</H3>
-<P><A HREF="ActiveXScripting.html">Preliminary Active Scripting and Debugging documentation</A> is available.</P>
-<P>2 Quick-Start guides have been provided, which also contain other links. See the <A HREF="QuickStartClientCom.html">Quick Start for Client side COM</A> and the <A HREF="QuickStartServerCom.html">Quick Start for Server side COM</A> </P>
-</P></DIR>
-</DIR>
-</BODY>
-</HTML>
+    body {
+      background: var(--black);
+      color: var(--white);
+      line-height: 1.6;
+    }
+
+    a {
+      color: var(--white);
+      text-decoration: none;
+    }
+
+    section {
+      padding: 80px 20px;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    h1, h2, h3 {
+      color: var(--white);
+      margin-bottom: 20px;
+    }
+
+    .accent {
+      color: var(--red);
+    }
+
+    /* HERO */
+    .hero {
+      position: relative;
+      height: 90vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    .hero video {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.25;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero h1 {
+      font-size: 3rem;
+      margin-bottom: 10px;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      color: var(--gray);
+      margin-bottom: 25px;
+    }
+
+    .btn {
+      display: inline-block;
+      background: var(--red);
+      padding: 12px 28px;
+      border-radius: 30px;
+      font-weight: 600;
+      transition: 0.3s;
+    }
+
+    .btn:hover {
+      background: #a30f19;
+    }
+
+    /* SERVICES */
+    .packages {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 25px;
+    }
+
+    .package {
+      border: 1px solid #222;
+      padding: 25px;
+      border-radius: 12px;
+      background: #111;
+    }
+
+    .package h3 {
+      color: var(--red);
+    }
+
+    /* CALCULATOR */
+    .calculator {
+      background: #111;
+      border-radius: 15px;
+      padding: 30px;
+      margin-top: 40px;
+    }
+
+    .calc-group {
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 6px;
+      color: var(--gray);
+    }
+
+    select, input[type="checkbox"] {
+      width: 100%;
+      padding: 10px;
+      border-radius: 6px;
+      border: none;
+      background: #222;
+      color: var(--white);
+    }
+
+    .addons label {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .price-output {
+      font-size: 1.8rem;
+      margin-top: 20px;
+      color: var(--red);
+    }
+
+    /* SOCIALS */
+    .socials {
+      display: flex;
+      gap: 20px;
+      margin-top: 20px;
+    }
+
+    .socials a {
+      font-size: 1.5rem;
+    }
+
+    footer {
+      text-align: center;
+      padding: 40px 20px;
+      color: var(--gray);
+      border-top: 1px solid #222;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- HERO -->
+  <section class="hero">
+    <video autoplay muted loop>
+      <!-- Replace with your own detailing video -->
+      <source src="video-placeholder.mp4" type="video/mp4">
+    </video>
+
+    <div class="hero-content">
+      <h1>Reset <span class="accent">Auto Details</span></h1>
+      <p>Mobile Detailing • Clean. Reset. Repeat.</p>
+      <a href="tel:5555555555" class="btn">Call Now</a>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section>
+    <h2>Mobile Detailing in <span class="accent">Cook County</span></h2>
+    <p>
+      Reset Auto Details provides professional mobile detailing services directly
+      to your location. We focus on quality, efficiency, and results that make your
+      vehicle feel brand new.
+    </p>
+  </section>
+
+  <!-- PACKAGES -->
+  <section>
+    <h2>Detailing Packages</h2>
+
+    <div class="packages">
+      <div class="package">
+        <h3>Basic Reset</h3>
+        <p>Exterior wash, interior wipe down.</p>
+        <p><strong>Starting at $XX</strong></p>
+      </div>
+
+      <div class="package">
+        <h3>Full Reset</h3>
+        <p>Interior & exterior deep clean.</p>
+        <p><strong>Starting at $XX</strong></p>
+      </div>
+
+      <div class="package">
+        <h3>Deep Reset</h3>
+        <p>Complete restoration-style detail.</p>
+        <p><strong>Starting at $XX</strong></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CALCULATOR -->
+  <section>
+    <h2>Instant Price Estimate</h2>
+
+    <div class="calculator">
+      <div class="calc-group">
+        <label>
+          <input type="checkbox" id="agreement">
+          I agree to provide water & electricity
+        </label>
+      </div>
+
+      <div class="calc-group">
+        <label>Package</label>
+        <select id="package">
+          <option value="0">Select</option>
+          <option value="100">Basic Reset</option>
+          <option value="160">Full Reset</option>
+          <option value="220">Deep Reset</option>
+        </select>
+      </div>
+
+      <div class="calc-group">
+        <label>Vehicle Size</label>
+        <select id="size">
+          <option value="1">Sedan</option>
+          <option value="1.2">SUV</option>
+          <option value="1.3">Truck</option>
+          <option value="1.4">Large SUV / Van</option>
+        </select>
+      </div>
+
+      <div class="calc-group">
+        <label>Vehicle Condition</label>
+        <select id="condition">
+          <option value="1">Light</option>
+          <option value="1.2">Moderate</option>
+          <option value="1.4">Heavy</option>
+        </select>
+      </div>
+
+      <div class="calc-group addons">
+        <label><input type="checkbox" value="50" class="addon"> Paint Correction</label>
+        <label><input type="checkbox" value="40" class="addon"> Headlight Restoration</label>
+        <label><input type="checkbox" value="80" class="addon"> Window Tint</label>
+        <label><input type="checkbox" value="0" class="addon"> Future Add-on</label>
+      </div>
+
+      <div class="price-output" id="price">$0</div>
+      <p style="color:#888;font-size:0.9rem;">Final price may vary after inspection.</p>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section>
+    <h2>Contact</h2>
+    <p>Call or message us on social media to book your detail.</p>
+
+    <div class="socials">
+      <a href="#" title="Instagram">📷</a>
+      <a href="#" title="Facebook">📘</a>
+      <a href="#" title="TikTok">🎵</a>
+    </div>
+  </section>
+
+  <footer>
+    © 2025 Reset Auto Details • Cook County
+  </footer>
+
+  <script>
+    const agreement = document.getElementById('agreement');
+    const pkg = document.getElementById('package');
+    const size = document.getElementById('size');
+    const condition = document.getElementById('condition');
+    const addons = document.querySelectorAll('.addon');
+    const priceOutput = document.getElementById('price');
+
+    function calculate() {
+      if (!agreement.checked) {
+        priceOutput.textContent = "$0";
+        return;
+      }
+
+      let total = Number(pkg.value);
+      total *= Number(size.value);
+      total *= Number(condition.value);
+
+      addons.forEach(addon => {
+        if (addon.checked) total += Number(addon.value);
+      });
+
+      priceOutput.textContent = "$" + Math.round(total);
+    }
+
+    document.querySelectorAll('select, input').forEach(el => {
+      el.addEventListener('change', calculate);
+    });
+  </script>
+
+</body>
+</html>
+
