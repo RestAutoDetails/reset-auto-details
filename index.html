@@ -6,6 +6,31 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700&display=swap" rel="stylesheet">
   <style>
+    .agreement-box {
+  background: #161616;
+  border: 2px solid #c1121f; /* red border */
+  padding: 15px 20px;
+  border-radius: 10px;
+  font-size: 1.1rem;
+  color: #f5f5f5;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.agreement-box input[type="checkbox"] {
+  width: 22px;
+  height: 22px;
+  accent-color: #c1121f;
+  cursor: pointer;
+}
+
+.agreement-box:hover {
+  background: #1a1a1a;
+  border-color: #ff1f2f;
+}
+
     :root {
       --black: #0b0b0b;
       --red: #c1121f;
@@ -267,10 +292,11 @@
 
     <div class="calculator disabled" id="calculator">
       <div class="calc-group">
-        <label>
-          <input type="checkbox" id="agreement">
-          I agree to provide water & electricity (required for mobile service)
-        </label>
+        <label class="agreement-box">
+  <input type="checkbox" id="agreement">
+  I agree to provide water & electricity (required for mobile service)
+</label>
+
       </div>
 
       <div class="calc-group">
