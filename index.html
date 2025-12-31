@@ -343,22 +343,32 @@
       </div>
 
      <div class="addons">
-  <label>
-    <input type="checkbox" value="70"> Steam Cleaning
-  </label>
 
   <label>
-    <input type="checkbox" value="95"> Upholstery Shampoo
-  </label>
+  <span>
+    <input type="checkbox" value="95">
+    Upholstery Shampoo
+  </span>
+  <span class="best-seller">BEST SELLER</span>
+</label>
 
-  <label>
+<label>
+  <span>
+    <input type="checkbox" value="45">
+    Protective Wax
+  </span>
+  <span class="best-seller">BEST SELLER</span>
+</label>
+
+       
+       <label>
     <input type="checkbox" value="60"> Stain Removal
   </label>
 
-  <label>
-    <input type="checkbox" value="45"> Protective Wax
+       <label>
+    <input type="checkbox" value="70"> Steam Cleaning
   </label>
-
+       
   <label>
     <input type="checkbox" value="85"> Pet Hair Removal
   </label>
@@ -431,6 +441,22 @@
     document.querySelectorAll('select, input').forEach(el => {
       el.addEventListener('change', calculate);
     });
+    .best-seller {
+  background: #c1121f;
+  color: white;
+  font-size: 0.7rem;
+  font-weight: bold;
+  padding: 3px 8px;
+  border-radius: 6px;
+  margin-left: 8px;
+}
+
+.addons label {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
   </script>
 
 </body>
