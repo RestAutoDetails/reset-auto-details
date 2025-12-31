@@ -1,190 +1,209 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>Reset Auto Details | Mobile Detailing</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta charset="UTF-8" />
+<title>Reset Auto Details | Mobile Detailing</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <!-- Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700&display=swap" rel="stylesheet">
 
-  <!-- Icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+:root {
+  --black:#0b0b0b;
+  --red:#c1121f;
+  --white:#f5f5f5;
+  --gray:#b1b1b1;
+}
 
-  <style>
-    :root {
-      --black: #0b0b0b;
-      --red: #c1121f;
-      --white: #f5f5f5;
-      --gray: #b1b1b1;
-    }
+* {
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+  font-family:'Montserrat',sans-serif;
+}
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      font-family: 'Montserrat', sans-serif;
-    }
+body {
+  background:var(--black);
+  color:var(--white);
+  line-height:1.6;
+}
 
-    body {
-      background: var(--black);
-      color: var(--white);
-    }
+section {
+  padding:80px 20px;
+  max-width:1200px;
+  margin:auto;
+}
 
-    section {
-      padding: 80px 20px;
-      max-width: 1200px;
-      margin: auto;
-    }
+a {
+  color:var(--white);
+  text-decoration:none;
+}
 
-    h1, h2 {
-      margin-bottom: 20px;
-    }
+/* HERO */
+.hero {
+  position:relative;
+  height:90vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  overflow:hidden;
+}
 
-    .accent { color: var(--red); }
+.hero video {
+  position:absolute;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  opacity:0.25;
+}
 
-    /* HERO */
-    .hero {
-      height: 90vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      position: relative;
-      overflow: hidden;
-    }
+.hero-content {
+  position:relative;
+  z-index:2;
+}
 
-    .hero video {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      opacity: 0.25;
-    }
+.hero h1 {
+  font-size:3rem;
+}
 
-    .hero-content { position: relative; z-index: 2; }
+.accent {
+  color:var(--red);
+}
 
-    .btn {
-      display: inline-block;
-      background: var(--red);
-      padding: 12px 28px;
-      border-radius: 30px;
-      font-weight: 600;
-      margin: 10px;
-      color: white;
-      text-decoration: none;
-    }
+.btn {
+  display:inline-block;
+  background:var(--red);
+  padding:12px 28px;
+  border-radius:30px;
+  font-weight:600;
+  margin-top:15px;
+}
 
-    .btn:hover { background: #a30f19; }
+/* PACKAGES */
+.packages {
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:25px;
+}
 
-    /* PACKAGES */
-    .packages {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 25px;
-    }
+.package {
+  background:#111;
+  border-radius:12px;
+  padding:25px;
+  border:1px solid #222;
+}
 
-    .package {
-      background: #111;
-      border-radius: 12px;
-      padding: 25px;
-      border: 1px solid #222;
-    }
+/* CALCULATOR */
+.calculator {
+  background:#111;
+  border-radius:15px;
+  padding:30px;
+  margin-top:40px;
+}
 
-    /* CALCULATOR */
-    .calculator {
-      background: #111;
-      border-radius: 15px;
-      padding: 30px;
-      margin-top: 40px;
-    }
+.calculator.disabled {
+  opacity:0.45;
+  pointer-events:none;
+}
 
-    .calculator.disabled {
-      opacity: 0.4;
-      pointer-events: none;
-    }
+.calculator.disabled #agreement {
+  pointer-events:auto;
+}
 
-    .calculator.disabled #agreement {
-      pointer-events: auto;
-    }
+.calc-group {
+  margin-bottom:20px;
+}
 
-    .agreement-box {
-      border: 2px solid var(--red);
-      padding: 15px;
-      border-radius: 10px;
-      display: flex;
-      gap: 10px;
-      align-items: center;
-      margin-bottom: 20px;
-    }
+label {
+  display:block;
+  margin-bottom:6px;
+  color:var(--gray);
+}
 
-    select {
-      width: 100%;
-      padding: 10px;
-      background: #222;
-      color: white;
-      border-radius: 6px;
-      border: none;
-    }
+select {
+  width:100%;
+  padding:10px;
+  border-radius:6px;
+  border:none;
+  background:#222;
+  color:var(--white);
+}
 
-    .addons {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 12px;
-    }
+/* AGREEMENT */
+.agreement-box {
+  background:#161616;
+  border:2px solid var(--red);
+  padding:15px;
+  border-radius:10px;
+  display:flex;
+  gap:10px;
+  align-items:center;
+}
 
-    .addons label {
-      background: #161616;
-      padding: 10px;
-      border-radius: 8px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
+/* ADDONS */
+.addons {
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:12px;
+}
 
-    .best-seller {
-      background: var(--red);
-      color: white;
-      font-size: 0.7rem;
-      padding: 3px 8px;
-      border-radius: 6px;
-    }
+.addons label {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  background:#161616;
+  padding:10px;
+  border-radius:8px;
+}
 
-    .locked-addon {
-      opacity: 0.45;
-      cursor: not-allowed;
-    }
+.best-seller {
+  background:#c1121f;
+  color:white;
+  font-size:0.7rem;
+  font-weight:bold;
+  padding:3px 8px;
+  border-radius:6px;
+  margin-left:8px;
+}
 
-    .price-output {
-      font-size: 1.8rem;
-      margin-top: 20px;
-      color: var(--red);
-    }
+/* LOCKED */
+.locked-addon {
+  opacity:0.45;
+  cursor:not-allowed;
+}
 
-    /* SOCIALS */
-    .socials {
-      display: flex;
-      gap: 25px;
-      font-size: 2rem;
-      margin-top: 20px;
-    }
+.locked-addon::after {
+  content:" 🔒";
+  color:#c1121f;
+}
 
-    .socials i:hover {
-      color: var(--red);
-      transform: scale(1.2);
-    }
+/* PRICE */
+.price-output {
+  font-size:1.8rem;
+  margin-top:20px;
+  color:var(--red);
+}
 
-    footer {
-      text-align: center;
-      padding: 40px;
-      color: var(--gray);
-      border-top: 1px solid #222;
-    }
-  </style>
+/* SOCIALS */
+.socials {
+  display:flex;
+  gap:20px;
+  font-size:1.6rem;
+}
+
+footer {
+  text-align:center;
+  padding:40px;
+  border-top:1px solid #222;
+  color:var(--gray);
+}
+</style>
 </head>
 
 <body>
 
+<!-- HERO -->
 <section class="hero">
   <video autoplay muted loop>
     <source src="video-placeholder.mp4" type="video/mp4">
@@ -193,90 +212,144 @@
     <h1>Reset <span class="accent">Auto Details</span></h1>
     <p>Mobile Detailing • Clean. Reset. Repeat.</p>
     <a href="tel:5555555555" class="btn">Call Now</a>
-    <a href="sms:5555555555" class="btn" style="background:#222;border:1px solid var(--red);">Text for Quote</a>
   </div>
 </section>
 
+<!-- ABOUT -->
 <section>
-  <h2>Instant Price Estimate</h2>
-  <div class="calculator disabled" id="calculator">
+  <h2>Mobile Detailing in <span class="accent">Cook County</span></h2>
+  <p>Professional mobile detailing brought directly to you.</p>
+</section>
 
+<!-- PACKAGES -->
+<section>
+  <h2>Detailing Packages</h2>
+  <div class="packages">
+    <div class="package">
+      <h3>Basic Reset</h3>
+      <p>Exterior wash & interior wipe down.</p>
+    </div>
+    <div class="package">
+      <h3>Full Reset</h3>
+      <p>Interior & exterior deep clean.</p>
+    </div>
+    <div class="package">
+      <h3>Deep Reset</h3>
+      <p>Complete restoration-style detail.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CALCULATOR -->
+<section>
+<h2>Instant Price Estimate</h2>
+
+<div class="calculator disabled" id="calculator">
+
+  <div class="calc-group">
     <label class="agreement-box">
       <input type="checkbox" id="agreement">
       I agree to provide water & electricity (required)
     </label>
+  </div>
 
+  <div class="calc-group">
+    <label>Package</label>
     <select id="package">
-      <option value="0">Select Package</option>
+      <option value="0">Select</option>
       <option value="100">Basic Reset</option>
       <option value="160">Full Reset</option>
       <option value="220">Deep Reset</option>
     </select>
+  </div>
 
+  <div class="calc-group">
+    <label>Vehicle Size</label>
     <select id="size">
-      <option value="1">Coupe / Sedan</option>
-      <option value="1.2">Small SUV / Truck</option>
-      <option value="1.3">Large SUV / Truck</option>
+      <option value="1">Sedan</option>
+      <option value="1.2">SUV</option>
+      <option value="1.3">Truck</option>
     </select>
+  </div>
 
+  <div class="calc-group">
+    <label>Condition</label>
     <select id="condition">
       <option value="1">Light</option>
       <option value="1.2">Moderate</option>
       <option value="1.4">Heavy</option>
     </select>
-
-    <div class="addons">
-      <label><input class="addon" type="checkbox" value="95"> Upholstery Shampoo <span class="best-seller">BEST</span></label>
-      <label><input class="addon" type="checkbox" value="45"> Protective Wax <span class="best-seller">BEST</span></label>
-      <label><input class="addon" type="checkbox" value="70"> Steam Cleaning</label>
-      <label><input class="addon" type="checkbox" value="60"> Stain Removal</label>
-      <label><input class="addon" type="checkbox" value="85"> Pet Hair Removal</label>
-      <label class="locked-addon">Paint Correction 🔒</label>
-      <label class="locked-addon">Window Tint 🔒</label>
-    </div>
-
-    <div class="price-output" id="price">$0</div>
   </div>
+
+  <div class="addons">
+    <label>
+      <span><input type="checkbox" class="addon" value="95"> Upholstery Shampoo</span>
+      <span class="best-seller">BEST SELLER</span>
+    </label>
+
+    <label>
+      <span><input type="checkbox" class="addon" value="45"> Protective Wax</span>
+      <span class="best-seller">BEST SELLER</span>
+    </label>
+
+    <label><input type="checkbox" class="addon" value="60"> Stain Removal</label>
+    <label><input type="checkbox" class="addon" value="70"> Steam Cleaning</label>
+    <label><input type="checkbox" class="addon" value="85"> Pet Hair Removal</label>
+
+    <label class="locked-addon"><input type="checkbox" disabled> Paint Correction</label>
+    <label class="locked-addon"><input type="checkbox" disabled> Window Tint</label>
+  </div>
+
+  <div class="price-output" id="price">$0</div>
+</div>
 </section>
 
+<!-- CONTACT -->
 <section>
-  <h2>Contact</h2>
-  <div class="socials">
-    <a href="https://www.instagram.com/resetautodetails" target="_blank"><i class="fab fa-instagram"></i></a>
-    <a href="https://www.facebook.com/profile.php?id=61585466470226" target="_blank"><i class="fab fa-facebook"></i></a>
-    <a href="https://www.tiktok.com/@diegosautodetails" target="_blank"><i class="fab fa-tiktok"></i></a>
-  </div>
+<h2>Contact</h2>
+<div class="socials">
+  <a href="https://www.instagram.com/resetautodetails" target="_blank">📷</a>
+  <a href="https://www.facebook.com/profile.php?id=61585466470226" target="_blank">📘</a>
+  <a href="https://www.tiktok.com/@diegosautodetails" target="_blank">🎵</a>
+</div>
 </section>
 
-<footer>© 2025 Reset Auto Details • Cook County</footer>
+<footer>© 2025 Reset Auto Details</footer>
 
 <script>
-  const agreement = document.getElementById('agreement');
-  const pkg = document.getElementById('package');
-  const size = document.getElementById('size');
-  const condition = document.getElementById('condition');
-  const addons = document.querySelectorAll('.addon');
-  const price = document.getElementById('price');
-  const calculator = document.getElementById('calculator');
+const agreement = document.getElementById('agreement');
+const pkg = document.getElementById('package');
+const size = document.getElementById('size');
+const condition = document.getElementById('condition');
+const addons = document.querySelectorAll('.addon');
+const priceOutput = document.getElementById('price');
+const calculator = document.getElementById('calculator');
 
-  function calculate() {
-    if (!agreement.checked) {
-      calculator.classList.add('disabled');
-      price.textContent = "$0";
-      return;
-    }
-
-    calculator.classList.remove('disabled');
-
-    let total = pkg.value * size.value * condition.value;
-    addons.forEach(a => a.checked && (total += Number(a.value)));
-    price.textContent = "$" + Math.round(total);
+function calculate() {
+  if (!agreement.checked) {
+    calculator.classList.add('disabled');
+    priceOutput.textContent = "$0";
+    return;
   }
 
-  document.querySelectorAll('input, select').forEach(el => {
-    el.addEventListener('change', calculate);
+  calculator.classList.remove('disabled');
+
+  let total = Number(pkg.value);
+  total *= Number(size.value);
+  total *= Number(condition.value);
+
+  addons.forEach(addon => {
+    if (addon.checked) total += Number(addon.value);
   });
+
+  priceOutput.textContent = "$" + Math.round(total);
+}
+
+document.querySelectorAll('input, select').forEach(el =>
+  el.addEventListener('change', calculate)
+);
 </script>
 
 </body>
 </html>
+
