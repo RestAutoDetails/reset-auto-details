@@ -133,20 +133,40 @@
       color: var(--gray);
     }
 
-    select, input[type="checkbox"] {
-      width: 100%;
-      padding: 10px;
-      border-radius: 6px;
-      border: none;
-      background: #222;
-      color: var(--white);
-    }
+  select {
+  width: 100%;
+  padding: 10px;
+  border-radius: 6px;
+  border: none;
+  background: #222;
+  color: var(--white);
+}
 
-    .addons label {
-      display: flex;
-      gap: 10px;
-      align-items: center;
-    }
+input[type="checkbox"] {
+  width: auto;
+  accent-color: var(--red);
+}
+
+
+
+input[type="checkbox"] {
+  width: auto;
+  accent-color: var(--red);    }
+
+.addons {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 12px;
+}
+
+.addons label {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  background: #161616;
+  padding: 10px;
+  border-radius: 8px;
+}
 
     .price-output {
       font-size: 1.8rem;
