@@ -4,47 +4,14 @@
   <meta charset="UTF-8" />
   <title>Reset Auto Details | Mobile Detailing</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700&display=swap" rel="stylesheet">
+
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
   <style>
-    .locked-addon {
-  opacity: 0.45;
-  cursor: not-allowed;
-}
-
-.locked-addon input {
-  cursor: not-allowed;
-}
-.locked-addon::after {
-  content: " 🔒";
-  color: #c1121f;
-  font-size: 0.9rem;
-}
-
-    .agreement-box {
-  background: #161616;
-  border: 2px solid #c1121f; /* red border */
-  padding: 15px 20px;
-  border-radius: 10px;
-  font-size: 1.1rem;
-  color: #f5f5f5;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin-bottom: 20px;
-}
-
-.agreement-box input[type="checkbox"] {
-  width: 22px;
-  height: 22px;
-  accent-color: #c1121f;
-  cursor: pointer;
-}
-
-.agreement-box:hover {
-  background: #1a1a1a;
-  border-color: #ff1f2f;
-}
-
     :root {
       --black: #0b0b0b;
       --red: #c1121f;
@@ -62,12 +29,6 @@
     body {
       background: var(--black);
       color: var(--white);
-      line-height: 1.6;
-    }
-
-    a {
-      color: var(--white);
-      text-decoration: none;
     }
 
     section {
@@ -76,23 +37,20 @@
       margin: auto;
     }
 
-    h1, h2, h3 {
-      color: var(--white);
+    h1, h2 {
       margin-bottom: 20px;
     }
 
-    .accent {
-      color: var(--red);
-    }
+    .accent { color: var(--red); }
 
     /* HERO */
     .hero {
-      position: relative;
       height: 90vh;
       display: flex;
       align-items: center;
       justify-content: center;
       text-align: center;
+      position: relative;
       overflow: hidden;
     }
 
@@ -104,21 +62,7 @@
       opacity: 0.25;
     }
 
-    .hero-content {
-      position: relative;
-      z-index: 2;
-    }
-
-    .hero h1 {
-      font-size: 3rem;
-      margin-bottom: 10px;
-    }
-
-    .hero p {
-      font-size: 1.2rem;
-      color: var(--gray);
-      margin-bottom: 25px;
-    }
+    .hero-content { position: relative; z-index: 2; }
 
     .btn {
       display: inline-block;
@@ -126,14 +70,14 @@
       padding: 12px 28px;
       border-radius: 30px;
       font-weight: 600;
-      transition: 0.3s;
+      margin: 10px;
+      color: white;
+      text-decoration: none;
     }
 
-    .btn:hover {
-      background: #a30f19;
-    }
+    .btn:hover { background: #a30f19; }
 
-    /* SERVICES */
+    /* PACKAGES */
     .packages {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -141,20 +85,10 @@
     }
 
     .package {
-      border: 1px solid #222;
-      padding: 25px;
-      border-radius: 12px;
       background: #111;
-      transition: transform 0.25s ease, box-shadow 0.25s ease;
-    }
-
-    .package:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 10px 25px rgba(193,18,31,0.3);
-    }
-
-    .package h3 {
-      color: var(--red);
+      border-radius: 12px;
+      padding: 25px;
+      border: 1px solid #222;
     }
 
     /* CALCULATOR */
@@ -165,44 +99,32 @@
       margin-top: 40px;
     }
 
-   .calculator.disabled {
-  opacity: 0.4;
-  pointer-events: none; /* everything inside disabled */
-}
+    .calculator.disabled {
+      opacity: 0.4;
+      pointer-events: none;
+    }
 
-.calculator.disabled #agreement {
-  pointer-events: auto; /* allow the checkbox to be clicked */
-}
-
-    
-
-    .calculator.enabled {
-      opacity: 1;
+    .calculator.disabled #agreement {
       pointer-events: auto;
     }
 
-    .calc-group {
+    .agreement-box {
+      border: 2px solid var(--red);
+      padding: 15px;
+      border-radius: 10px;
+      display: flex;
+      gap: 10px;
+      align-items: center;
       margin-bottom: 20px;
-    }
-
-    label {
-      display: block;
-      margin-bottom: 6px;
-      color: var(--gray);
     }
 
     select {
       width: 100%;
       padding: 10px;
+      background: #222;
+      color: white;
       border-radius: 6px;
       border: none;
-      background: #222;
-      color: var(--white);
-    }
-
-    input[type="checkbox"] {
-      width: auto;
-      accent-color: var(--red);
     }
 
     .addons {
@@ -212,18 +134,25 @@
     }
 
     .addons label {
-      display: flex;
-      gap: 10px;
-      align-items: center;
       background: #161616;
       padding: 10px;
       border-radius: 8px;
-      transition: transform 0.25s ease, box-shadow 0.25s ease;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
     }
 
-    .addons label:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 10px 25px rgba(193,18,31,0.3);
+    .best-seller {
+      background: var(--red);
+      color: white;
+      font-size: 0.7rem;
+      padding: 3px 8px;
+      border-radius: 6px;
+    }
+
+    .locked-addon {
+      opacity: 0.45;
+      cursor: not-allowed;
     }
 
     .price-output {
@@ -235,229 +164,119 @@
     /* SOCIALS */
     .socials {
       display: flex;
-      gap: 20px;
+      gap: 25px;
+      font-size: 2rem;
       margin-top: 20px;
-      font-size: 1.5rem;
+    }
+
+    .socials i:hover {
+      color: var(--red);
+      transform: scale(1.2);
     }
 
     footer {
       text-align: center;
-      padding: 40px 20px;
+      padding: 40px;
       color: var(--gray);
       border-top: 1px solid #222;
     }
   </style>
 </head>
+
 <body>
 
-  <!-- HERO -->
-  <section class="hero">
-    <video autoplay muted loop>
-      <source src="video-placeholder.mp4" type="video/mp4">
-    </video>
-    <div class="hero-content">
-      <h1>Reset <span class="accent">Auto Details</span></h1>
-      <p>Mobile Detailing • Clean. Reset. Repeat.</p>
-      <a href="tel:5555555555" class="btn">Call Now</a>
-      <a href="sms:5555555555" class="btn" style="margin-left:10px;background:#222;border:1px solid var(--red);">
-        Text for Quote
-      </a>
+<section class="hero">
+  <video autoplay muted loop>
+    <source src="video-placeholder.mp4" type="video/mp4">
+  </video>
+  <div class="hero-content">
+    <h1>Reset <span class="accent">Auto Details</span></h1>
+    <p>Mobile Detailing • Clean. Reset. Repeat.</p>
+    <a href="tel:5555555555" class="btn">Call Now</a>
+    <a href="sms:5555555555" class="btn" style="background:#222;border:1px solid var(--red);">Text for Quote</a>
+  </div>
+</section>
+
+<section>
+  <h2>Instant Price Estimate</h2>
+  <div class="calculator disabled" id="calculator">
+
+    <label class="agreement-box">
+      <input type="checkbox" id="agreement">
+      I agree to provide water & electricity (required)
+    </label>
+
+    <select id="package">
+      <option value="0">Select Package</option>
+      <option value="100">Basic Reset</option>
+      <option value="160">Full Reset</option>
+      <option value="220">Deep Reset</option>
+    </select>
+
+    <select id="size">
+      <option value="1">Coupe / Sedan</option>
+      <option value="1.2">Small SUV / Truck</option>
+      <option value="1.3">Large SUV / Truck</option>
+    </select>
+
+    <select id="condition">
+      <option value="1">Light</option>
+      <option value="1.2">Moderate</option>
+      <option value="1.4">Heavy</option>
+    </select>
+
+    <div class="addons">
+      <label><input class="addon" type="checkbox" value="95"> Upholstery Shampoo <span class="best-seller">BEST</span></label>
+      <label><input class="addon" type="checkbox" value="45"> Protective Wax <span class="best-seller">BEST</span></label>
+      <label><input class="addon" type="checkbox" value="70"> Steam Cleaning</label>
+      <label><input class="addon" type="checkbox" value="60"> Stain Removal</label>
+      <label><input class="addon" type="checkbox" value="85"> Pet Hair Removal</label>
+      <label class="locked-addon">Paint Correction 🔒</label>
+      <label class="locked-addon">Window Tint 🔒</label>
     </div>
-  </section>
 
-  <!-- ABOUT -->
-  <section>
-    <h2>Mobile Detailing in <span class="accent">Cook County</span></h2>
-    <p>
-      Reset Auto Details provides professional mobile detailing services directly
-      to your location. We focus on quality, efficiency, and results that make your
-      vehicle feel brand new.
-    </p>
-  </section>
+    <div class="price-output" id="price">$0</div>
+  </div>
+</section>
 
-  <!-- PACKAGES -->
-  <section>
-    <h2>Detailing Packages</h2>
-    <div class="packages">
-      <div class="package">
-        <h3>Basic Reset</h3>
-        <p>Exterior wash, interior wipe down.</p>
-        <p><strong>Starting at $XX</strong></p>
-      </div>
-      <div class="package">
-        <h3>Full Reset</h3>
-        <p>Interior & exterior deep clean.</p>
-        <p><strong>Starting at $XX</strong></p>
-      </div>
-      <div class="package">
-        <h3>Deep Reset</h3>
-        <p>Complete restoration-style detail.</p>
-        <p><strong>Starting at $XX</strong></p>
-      </div>
-    </div>
-  </section>
+<section>
+  <h2>Contact</h2>
+  <div class="socials">
+    <a href="https://www.instagram.com/resetautodetails" target="_blank"><i class="fab fa-instagram"></i></a>
+    <a href="https://www.facebook.com/profile.php?id=61585466470226" target="_blank"><i class="fab fa-facebook"></i></a>
+    <a href="https://www.tiktok.com/@diegosautodetails" target="_blank"><i class="fab fa-tiktok"></i></a>
+  </div>
+</section>
 
-  <!-- CALCULATOR -->
-  <section>
-    <h2>Instant Price Estimate</h2>
-    <p style="color:#aaa; max-width:600px;">
-      Get a fast estimate based on your vehicle. Final pricing confirmed after inspection.
-    </p>
+<footer>© 2025 Reset Auto Details • Cook County</footer>
 
-    <div class="calculator disabled" id="calculator">
-      <div class="calc-group">
-        <label class="agreement-box">
-  <input type="checkbox" id="agreement">
-  I agree to provide water & electricity (required for mobile service)
-</label>
+<script>
+  const agreement = document.getElementById('agreement');
+  const pkg = document.getElementById('package');
+  const size = document.getElementById('size');
+  const condition = document.getElementById('condition');
+  const addons = document.querySelectorAll('.addon');
+  const price = document.getElementById('price');
+  const calculator = document.getElementById('calculator');
 
-      </div>
-
-      <div class="calc-group">
-        <label>Package</label>
-        <select id="package">
-          <option value="0">Select</option>
-          <option value="100">Basic Reset</option>
-          <option value="160">Full Reset</option>
-          <option value="220">Deep Reset</option>
-        </select>
-      </div>
-
-      <div class="calc-group">
-        <label>Vehicle Size</label>
-        <select id="size">
-          <option value="1">Coupe/Sedan</option>
-          <option value="1.2">Small SUV/Small Truck</option>
-          <option value="1.3">Large SUV/Large Truck</option>
-          
-        </select>
-      </div>
-
-      <div class="calc-group">
-        <label>Vehicle Condition</label>
-        <select id="condition">
-          <option value="1">Light</option>
-          <option value="1.2">Moderate</option>
-          <option value="1.4">Heavy</option>
-        </select>
-      </div>
-
-     <div class="addons">
-
-  <label>
-  <span>
-    <input type="checkbox" value="95">
-    Upholstery Shampoo
-  </span>
-  <span class="best-seller">BEST SELLER</span>
-</label>
-
-<label>
-  <span>
-    <input type="checkbox" value="45">
-    Protective Wax
-  </span>
-  <span class="best-seller">BEST SELLER</span>
-</label>
-
-       
-       <label>
-    <input type="checkbox" value="60"> Stain Removal
-  </label>
-
-       <label>
-    <input type="checkbox" value="70"> Steam Cleaning
-  </label>
-       
-  <label>
-    <input type="checkbox" value="85"> Pet Hair Removal
-  </label>
-
-  <!-- Locked Premium Services -->
-  <label class="locked-addon">
-    <input type="checkbox" disabled>
-    Paint Correction
-  </label>
-
-  <label class="locked-addon">
-    <input type="checkbox" disabled>
-    Window Tint
-  </label>
-</div>
-
-      <div class="price-output" id="price">$0</div>
-      <p style="color:#888;font-size:0.9rem;">Final price may vary after inspection.</p>
-    </div>
-  </section>
-
-  <!-- CONTACT -->
-  <section>
-    <h2>Contact</h2>
-    <p>Call or message us on social media to book your detail.</p>
-
-    <div class="socials">
-      <a href="https://www.instagram.com/resetautodetails?igsh=NDd3dWVkajl1NDM0&utm_source=qr" title="Instagram" target="_blank">📷</a>
-      <a href="https://www.facebook.com/profile.php?id=61585466470226&mibextid=wwXIfr&mibextid=wwXIfr" title="Facebook" target="_blank">📘</a>
-      <a href="https://www.tiktok.com/@diegosautodetails?_r=1&_t=ZT-92fjuzINGtq" title="TikTok" target="_blank">🎵</a>
-    </div>
-  </section>
-
-  <footer>
-    © 2025 Reset Auto Details • Cook County
-  </footer>
-
-  <script>
-    const agreement = document.getElementById('agreement');
-    const pkg = document.getElementById('package');
-    const size = document.getElementById('size');
-    const condition = document.getElementById('condition');
-    const addons = document.querySelectorAll('.addon');
-    const priceOutput = document.getElementById('price');
-
-    function calculate() {
-      const calcBox = document.getElementById('calculator');
-
-      if (!agreement.checked) {
-        calcBox.classList.add('disabled');
-        calcBox.classList.remove('enabled');
-        priceOutput.textContent = "$0";
-        return;
-      }
-
-      calcBox.classList.remove('disabled');
-      calcBox.classList.add('enabled');
-
-      let total = Number(pkg.value);
-      total *= Number(size.value);
-      total *= Number(condition.value);
-
-      addons.forEach(addon => {
-        if (addon.checked) total += Number(addon.value);
-      });
-
-      priceOutput.textContent = "$" + Math.round(total);
+  function calculate() {
+    if (!agreement.checked) {
+      calculator.classList.add('disabled');
+      price.textContent = "$0";
+      return;
     }
 
-    document.querySelectorAll('select, input').forEach(el => {
-      el.addEventListener('change', calculate);
-    });
-    .best-seller {
-  background: #c1121f;
-  color: white;
-  font-size: 0.7rem;
-  font-weight: bold;
-  padding: 3px 8px;
-  border-radius: 6px;
-  margin-left: 8px;
-}
+    calculator.classList.remove('disabled');
 
-.addons label {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
+    let total = pkg.value * size.value * condition.value;
+    addons.forEach(a => a.checked && (total += Number(a.value)));
+    price.textContent = "$" + Math.round(total);
+  }
 
-  </script>
+  document.querySelectorAll('input, select').forEach(el => {
+    el.addEventListener('change', calculate);
+  });
+</script>
 
 </body>
 </html>
