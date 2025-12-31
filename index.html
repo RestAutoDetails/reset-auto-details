@@ -126,10 +126,16 @@
       margin-top: 40px;
     }
 
-    .calculator.disabled {
-      opacity: 0.4;
-      pointer-events: none;
-    }
+   .calculator.disabled {
+  opacity: 0.4;
+  pointer-events: none; /* everything inside disabled */
+}
+
+.calculator.disabled #agreement {
+  pointer-events: auto; /* allow the checkbox to be clicked */
+}
+
+    
 
     .calculator.enabled {
       opacity: 1;
