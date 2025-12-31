@@ -53,12 +53,11 @@
 
 /* Details inside package */
 .package details {
-  display: block;
   margin-top: 10px;
 }
 
 /* Hide the details content by default */
-.package ul {
+.package details ul {
   max-height: 0;
   overflow: hidden;
   transition: max-height 0.3s ease;
@@ -67,31 +66,13 @@
   margin-top: 0;
 }
 
-/* When hovering over the package, expand the list */
-.package:hover ul {
-  max-height: 500px; /* big enough to show all items */
+/* When hovering over the package, expand all lists inside it */
+.package:hover details ul {
+  max-height: 500px;
   margin-top: 10px;
 }
 
-
-.package summary::marker {
-  display: none;
-}
-
-.package ul {
-  margin-top: 10px;
-  padding-left: 18px;
-  color: #ddd;
-}
-
-.package ul li {
-  margin-bottom: 6px;
-}
-
-  .package details {
-  margin-top: 10px;
-}
-
+/* Summary styling */
 .package summary {
   cursor: pointer;
   font-weight: 600;
@@ -103,67 +84,10 @@
   display: none;
 }
 
-.package ul {
-  margin-top: 10px;
-  padding-left: 18px;
-  color: #ddd;
-}
-
 .package ul li {
   margin-bottom: 6px;
 }
 
-.badge {
-  display: inline-block;
-  background: #c1121f;
-  color: white;
-  font-size: 0.75rem;
-  font-weight: bold;
-  padding: 4px 10px;
-  border-radius: 20px;
-  margin-left: 10px;
-}
-
-  .socials i {
-  font-size: 2rem;
-  transition: transform 0.2s ease, color 0.2s ease;
-}
-
-.socials i:hover {
-  transform: scale(1.15);
-  color: var(--red);
-}
-
-:root {
-  --black:#0b0b0b;
-  --red:#c1121f;
-  --white:#f5f5f5;
-  --gray:#b1b1b1;
-}
-
-* {
-  box-sizing:border-box;
-  margin:0;
-  padding:0;
-  font-family:'Montserrat',sans-serif;
-}
-
-body {
-  background:var(--black);
-  color:var(--white);
-  line-height:1.6;
-}
-
-section {
-  padding:80px 20px;
-  max-width:1200px;
-  margin:auto;
-}
-
-a {
-  color:var(--white);
-  text-decoration:none;
-}
 
 /* HERO */
 .hero {
