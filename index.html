@@ -274,8 +274,8 @@ footer { text-align:center; padding:40px; border-top:1px solid #222; color:var(-
 
 <script>
 // Enable calculator only when agreement is checked
-const calculator = document.getElementById('calculator');
 const agreement = document.getElementById('agreement');
+const calculator = document.getElementById('calculator');
 
 agreement.addEventListener('change', () => {
   if (agreement.checked) {
@@ -285,22 +285,24 @@ agreement.addEventListener('change', () => {
   }
 });
 
-// Auto-select package card (optional, still scrolls to calculator)
+// Auto-select package in dropdown when clicking package card (does not calculate price)
 const packageCards = document.querySelectorAll('.package');
+const pkgSelect = document.getElementById('package');
+
 packageCards.forEach(card => {
   card.addEventListener('click', () => {
     const packageValue = card.getAttribute('data-package');
-    document.getElementById('package').value = packageValue;
+    pkgSelect.value = packageValue;
     calculator.scrollIntoView({ behavior: 'smooth' });
   });
 });
 
-// Mobile toggle for details
+// Mobile tap toggle for details
 const detailsElements = document.querySelectorAll('.package details');
 detailsElements.forEach(detail => {
-  detail.addEventListener('click', e => {
+  detail.addEventListener('click', (e) => {
     if (window.matchMedia("(hover: none)").matches) {
-      e.preventDefault();
+      e.preventDefault(); // prevent default toggle
       const ul = detail.querySelector('ul');
       ul.style.maxHeight = ul.style.maxHeight && ul.style.maxHeight !== "0px" ? "0px" : "500px";
     }
