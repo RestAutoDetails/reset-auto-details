@@ -275,42 +275,60 @@ footer { text-align:center; padding:40px; border-top:1px solid #222; color:var(-
 <footer>© 2025 Reset Auto Details</footer>
 
 <script>
-// Enable calculator only when agreement is checked
-const agreement = document.getElementById('agreement');
-const calculator = document.getElementById('calculator');
+const pkg = document.getElementById('package');
+const size = document.getElementById('size');
+const condition = document.getElementById('condition');
+const addons = document.querySelectorAll('.addon');
+const priceOutput = document.getElementById('price');
 
-agreement.addEventListener('change', () => {
-  if (agreement.checked) {
-    calculator.classList.remove('disabled');
-  } else {
-    calculator.classList.add('disabled');
-  }
+// Calculate price function
+function calculate() {
+  let total = Number(pkg.value) || 0;
+  total *= Number(size.value) || 1;
+  total *= Number(condition.value) || 1;
+
+  addons.forEach(addon => {
+    if (addon.checked) total += Number(addon.value) || 0;
+  });
+
+  priceOutput.textContent = "$" + Math.round(total);
+}
+
+// Trigger calculation when inputs change
+document.querySelectorAll('select, input.addon').forEach(el => {
+  el.addEventListener('change', calculate);
 });
 
-// Auto-select package in dropdown when clicking package card (no scrolling, no calculation)
-const packageCards = document.querySelectorAll('.package');
-const pkgSelect = document.getElementById('package');
+// Keep checkbox functional (you can still style it or require it if you want)
+// But it no longer blocks calculation
+const agreement = document.getElementById('agreement');
+agreement.addEventListener('change', () => {
+  // optional: you could add a warning or style change when unchecked
+});
 
+// Auto-select package card without scrolling to calculator
+const packageCards = document.querySelectorAll('.package');
 packageCards.forEach(card => {
   card.addEventListener('click', () => {
     const packageValue = card.getAttribute('data-package');
-    pkgSelect.value = packageValue;
-    // Removed scrollIntoView and calculate
+    pkg.value = packageValue;
+    calculate(); // update price immediately
   });
 });
 
-// Mobile tap toggle for details
+// Mobile tap toggle for package details
 const detailsElements = document.querySelectorAll('.package details');
 detailsElements.forEach(detail => {
-  detail.addEventListener('click', (e) => {
+  detail.addEventListener('click', e => {
     if (window.matchMedia("(hover: none)").matches) {
-      e.preventDefault(); // prevent default toggle
+      e.preventDefault();
       const ul = detail.querySelector('ul');
       ul.style.maxHeight = ul.style.maxHeight && ul.style.maxHeight !== "0px" ? "0px" : "500px";
     }
   });
 });
 </script>
+
 
 
 </body>
