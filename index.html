@@ -325,17 +325,17 @@ packageCards.forEach(card => {
 });
 
 
-// Mobile tap toggle for details
 const detailsElements = document.querySelectorAll('.package details');
 detailsElements.forEach(detail => {
   detail.addEventListener('click', (e) => {
     if (window.matchMedia("(hover: none)").matches) {
-      e.preventDefault(); 
       const ul = detail.querySelector('ul');
+      // optional smooth toggle for mobile
       ul.style.maxHeight = ul.style.maxHeight && ul.style.maxHeight !== "0px" ? "0px" : "500px";
     }
   });
 });
+
 </script>
 
 
