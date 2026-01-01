@@ -285,7 +285,7 @@ agreement.addEventListener('change', () => {
   }
 });
 
-// Auto-select package in dropdown when clicking package card (does not calculate price)
+// Auto-select package in dropdown when clicking package card (no scrolling, no calculation)
 const packageCards = document.querySelectorAll('.package');
 const pkgSelect = document.getElementById('package');
 
@@ -293,7 +293,7 @@ packageCards.forEach(card => {
   card.addEventListener('click', () => {
     const packageValue = card.getAttribute('data-package');
     pkgSelect.value = packageValue;
-    calculator.scrollIntoView({ behavior: 'smooth' });
+    // Removed scrollIntoView and calculate
   });
 });
 
@@ -309,6 +309,7 @@ detailsElements.forEach(detail => {
   });
 });
 </script>
+
 
 </body>
 </html>
