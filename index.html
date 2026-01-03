@@ -21,6 +21,9 @@
   --red: #c1121f;
   --white: #f5f5f5;
   --gray: #b1b1b1;
+  --gold: #d4af37;
+--gold-soft: rgba(212, 175, 55, 0.25);
+
 }
 
 /* GENERAL */
@@ -261,11 +264,25 @@ footer { text-align:center; padding:40px; border-top:1px solid #222; color:var(-
   background: #1f1f1f;
   box-shadow: 0 15px 30px rgba(255, 215, 0, 0.4);
 }
-.package.luxury-finish .badge {
-  background: #ffd700;
+.package.luxury .badge {
+  background: linear-gradient(135deg, #f5e28a, var(--gold));
   color: #000;
-  font-weight: bold;
+  font-weight: 800;
+  letter-spacing: 0.5px;
 }
+  .package.luxury summary {
+  color: var(--gold);
+}
+
+.package.luxury summary:hover {
+  text-decoration: underline;
+}
+.google-review {
+  background: var(--red);
+  color: var(--white);
+}
+
+
 /* Make all addon labels Right-to-Left */
 .addon-section label {
   flex-direction: row-reverse;
@@ -300,11 +317,25 @@ footer { text-align:center; padding:40px; border-top:1px solid #222; color:var(-
 .calculator.disabled #agreement {
   pointer-events: auto;
 }
+.google-review {
+  background: var(--red);
+  color: #fff;
+  border: 2px solid var(--red);
+  margin-top: 12px;
+}
+
+
+.package.luxury {
+  border: 2px solid var(--gold);
+  background: linear-gradient(180deg, #1a1a1a, #121212);
+  box-shadow: 0 18px 35px var(--gold-soft);
+}
+
 
 </style>
 </head>
 
-<body>
+
 
 <!-- HERO -->
 <section class="hero">
@@ -374,8 +405,8 @@ footer { text-align:center; padding:40px; border-top:1px solid #222; color:var(-
       <p><strong>Starting at $65</strong></p>
     </div>
    <!-- FULL RESET -->
-<div class="package full-reset" data-package="70">
-  <h3>Full Reset <span class="badge">BEST VALUE</span></h3>
+<div class="package full-reset" data-package="75">
+  <h3>Full Reset <span class="badge">SAVE $30!</span></h3>
   <p>Complete interior & exterior detail.</p>
   <p>Includes everything in <strong>Exterior Reset</strong> + <strong>Interior Reset</strong>.</p>
 
@@ -399,12 +430,28 @@ footer { text-align:center; padding:40px; border-top:1px solid #222; color:var(-
 </div>
 
     <!-- LUXURY FINISH -->
-<div class="package luxury-finish" data-package="155">
-  <h3>Luxury Finish <span class="badge">ULTIMATE DETAIL</span></h3>
-  <p>Complete interior & exterior detail with premium add-ons.</p>
-  <p>Includes everything in <strong>Full Reset</strong> + <strong>Seat & Carpet Shampoo</strong>, <strong>Protective Wax</strong>, <strong>Steam Cleanse</strong>.</p>
+
+<div class="package full-reset luxury" data-package="155">
+  <h3>
+    Luxury Finish
+    <span class="badge">PREMIUM • SAVE $60</span>
+  </h3>
+
+  <p>Our most complete detailing experience, featuring 3 of our most popular add ons.</p>
+
+  <details>
+    <summary>View what's included</summary>
+    <ul>
+      <li>Everything in <strong>Full Reset</strong></li>
+      <li>Seat & Carpet Shampoo</li>
+      <li>Protective Wax</li>
+      <li>Steam Cleanse</li>
+    </ul>
+  </details>
+
   <p><strong>Starting at $155</strong></p>
 </div>
+
 
   </div>
 </section>
@@ -452,6 +499,26 @@ footer { text-align:center; padding:40px; border-top:1px solid #222; color:var(-
       Text Us to Refer
     </a>
   </div>
+  <body>
+</section>
+  <section>
+  <h2>
+    Trusted by <span class="accent">Local Drivers</span>
+  </h2>
+
+  <p style="max-width: 750px; margin-top: 10px;">
+    We take pride in delivering professional, reliable mobile detailing.
+    If you've had a great experience, we'd truly appreciate your feedback.
+  </p>
+
+  <div style="margin-top: 20px;">
+    <a href="YOUR_GOOGLE_REVIEW_LINK" class="btn google-review">
+      ⭐ Leave Us a Google Review
+    </a> 
+    <p style="margin-top: 10px; color: var(--gray);">
+  ★★★★★ Rated on Google
+</p>
+  </div>
 </section>
 
 <!-- CALCULATOR -->
@@ -460,7 +527,7 @@ footer { text-align:center; padding:40px; border-top:1px solid #222; color:var(-
 
   <button class="estimate-toggle" type="button">
     Instant Price Calculator 
-    <span>Click to see an estimate price in seconds *Price could change after quote</span>
+    <span>Click to see an estimate price in seconds *Not Final price</span>
   </button>
 
 <div class="calculator hidden disabled" id="calculator">
@@ -475,9 +542,9 @@ footer { text-align:center; padding:40px; border-top:1px solid #222; color:var(-
     <label>Package</label>
    <select id="package">
   <option value="0">Select</option>
-  <option value="30">Exterior Reset</option>
-  <option value="55">Interior Reset</option>
-  <option value="70">Full Reset</option>
+  <option value="40">Exterior Reset</option>
+  <option value="65">Interior Reset</option>
+  <option value="75">Full Reset</option>
  <option value="155">Luxury Finish</option>
 </select>
   </div>
@@ -495,8 +562,8 @@ footer { text-align:center; padding:40px; border-top:1px solid #222; color:var(-
     <label>Condition</label>
     <select id="condition">
       <option value="1">Light</option>
-      <option value="1.25">Moderate</option>
-      <option value="1.5">Heavy</option>
+      <option value="1.35">Moderate</option>
+      <option value="1.75">Heavy</option>
     </select>
   </div>
 
