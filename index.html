@@ -139,6 +139,51 @@ select { width: 100%; padding: 10px; border-radius: 6px; border: none; backgroun
 .socials i:hover { transform: scale(1.15); color: var(--red); }
 
 footer { text-align:center; padding:40px; border-top:1px solid #222; color:var(--gray); }
+
+.addon-section {
+  background: #121212;
+  border: 1px solid #222;
+  border-radius: 14px;
+  padding: 18px;
+}
+
+.addon-title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--red);
+  margin-bottom: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.addons {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px;
+}
+
+.addon-section label {
+  display: flex;
+  flex-direction: row-reverse;   
+  align-items: center;
+  gap: 10px;               /* spacing between checkbox & text */
+  background: #161616;
+  padding: 10px 12px;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  transition: background 0.2s ease;
+  cursor: pointer;
+}
+
+
+.addon-section label:hover {
+  background: #1c1c1c;
+}
+.addon-section label span {
+  flex: 1;
+  line-height: 1.4;
+}
+
 </style>
 </head>
 
@@ -246,19 +291,81 @@ footer { text-align:center; padding:40px; border-top:1px solid #222; color:var(-
     </select>
   </div>
 
-  <div class="addons">
-    <label><span><input type="checkbox" class="addon" value="40"> Seat and carpet Shampoo</span><span class="best-seller">BEST SELLER</span></label>
-    <label><span><input type="checkbox" class="addon" value="25"> Protective Wax</span><span class="best-seller">BEST SELLER</span></label>
-    <label><input type="checkbox" class="addon" value="30"> Stain Removal</label>
-    <label><input type="checkbox" class="addon" value="40"> Steam Cleanse</label>
-    <label><input type="checkbox" class="addon" value="40"> Pet Hair Removal</label>
-     <label><input type="checkbox" class="addon" value="25"> Fender Plastic Restoration</label>
-       <label><input type="checkbox" class="addon" value="30"> Engine Bay Cleanse</label>
-    <label class="locked-addon"><input type="checkbox" disabled> Truck Bed Restoration</label>
-    <label class="locked-addon"><input type="checkbox" disabled> Paint Correction</label>
-     <label class="locked-addon"><input type="checkbox" disabled> Brake Dust Removal</label>
-    <label class="locked-addon"><input type="checkbox" disabled> Window Tint</label>
+<div class="addons">
+
+  <!-- INTERIOR ADDONS -->
+  <div class="addon-section">
+    <h4 class="addon-title">Interior Add-Ons</h4>
+
+    <label>
+      <span>
+        <input type="checkbox" class="addon" value="40">
+        Seat & Carpet Shampoo
+      </span>
+      <span class="best-seller">BEST SELLER</span>
+    </label>
+
+    <label>
+      <input type="checkbox" class="addon" value="30">
+      Stain Removal
+    </label>
+
+    <label>
+      <input type="checkbox" class="addon" value="40">
+      Steam Cleanse
+    </label>
+
+    <label>
+      <input type="checkbox" class="addon" value="40">
+      Pet Hair Removal
+    </label>
   </div>
+
+  <!-- EXTERIOR ADDONS -->
+  <div class="addon-section">
+    <h4 class="addon-title">Exterior Add-Ons</h4>
+
+    <label>
+      <span>
+        <input type="checkbox" class="addon" value="25">
+        Protective Wax
+      </span>
+      <span class="best-seller">BEST SELLER</span>
+    </label>
+
+    <label>
+      <input type="checkbox" class="addon" value="25">
+      Fender Plastic Restoration
+    </label>
+
+    <label>
+      <input type="checkbox" class="addon" value="30">
+      Engine Bay Cleanse
+    </label>
+
+    <label class="locked-addon">
+      <input type="checkbox" disabled>
+      Truck Bed Restoration
+    </label>
+
+    <label class="locked-addon">
+      <input type="checkbox" disabled>
+      Paint Correction
+    </label>
+
+    <label class="locked-addon">
+      <input type="checkbox" disabled>
+      Brake Dust Removal
+    </label>
+
+    <label class="locked-addon">
+      <input type="checkbox" disabled>
+      Window Tint
+    </label>
+  </div>
+
+</div>
+
 
   <div class="price-output" id="price">$0</div>
 </div>
@@ -339,6 +446,12 @@ detailsElements.forEach(detail => {
 });
 
 </script>
+
+
+
+
+</body>
+</html>
 
 
 
