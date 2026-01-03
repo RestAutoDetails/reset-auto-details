@@ -9,6 +9,12 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
 <style>
+  .msg-btn {
+  background: #f5f5f5;
+  color: #f5f5f5;
+  margin-left: 12px;
+}
+
 /* VARIABLES */
 :root {
   --black: #0b0b0b;
@@ -117,6 +123,57 @@ section { padding: 80px 20px; max-width: 1200px; margin: auto; }
 .calc-group { margin-bottom: 20px; }
 label { display: block; margin-bottom: 6px; color: var(--gray); }
 select { width: 100%; padding: 10px; border-radius: 6px; border: none; background: #222; color: var(--white); }
+  /* Estimate Toggle */
+.estimate-wrapper {
+  margin-top: 50px;
+}
+
+.estimate-toggle {
+  width: 100%;
+  background: #161616;
+  border: 2px solid var(--red);
+  border-radius: 18px;
+  padding: 22px;
+  color: var(--white);
+  font-size: 1.1rem;
+  font-weight: 800;
+  cursor: pointer;
+  text-align: left;
+  transition: 0.3s ease;
+}
+
+.estimate-toggle span {
+  display: block;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--gray);
+  margin-top: 6px;
+}
+
+.estimate-toggle:hover {
+  background: #1d1d1d;
+  transform: translateY(-2px);
+}
+
+/* Collapsed calculator */
+.calculator.collapsed {
+  max-height: 0;
+  overflow: hidden;
+  padding: 0;
+  margin-top: 0;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.4s ease;
+}
+
+/* Open calculator */
+.calculator.open {
+  max-height: 5000px;
+  opacity: 1;
+  margin-top: 30px;
+  pointer-events: auto;
+}
+
 
 /* Agreement */
 .agreement-box { background: #161616; border: 2px solid var(--red); padding: 15px; border-radius: 10px; display: flex; gap: 10px; align-items: center; }
@@ -124,7 +181,21 @@ select { width: 100%; padding: 10px; border-radius: 6px; border: none; backgroun
 /* Addons */
 .addons { display: grid; grid-template-columns: repeat(auto-fit,minmax(220px,1fr)); gap:12px; }
 .addons label { display:flex; justify-content:space-between; align-items:center; background:#161616; padding:10px; border-radius:8px; }
-.best-seller { background: var(--red); color: var(--white); font-size:0.7rem; font-weight:bold; padding:3px 8px; border-radius:6px; margin-left:8px; }
+/* Add-On Badges */
+.best-seller {
+  background: var(--red);
+  color: var(--white);
+  font-size: 0.65rem;       /* slightly smaller */
+  font-weight: bold;
+  padding: 2px 6px;         /* smaller padding */
+  border-radius: 8px;
+  white-space: nowrap;       /* keep on one line */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 90px;           /* limits width */
+  display: inline-block;
+  text-align: center;
+}
 
 /* Locked */
 .locked-addon { opacity:0.45; cursor:not-allowed; }
@@ -162,11 +233,12 @@ footer { text-align:center; padding:40px; border-top:1px solid #222; color:var(-
   gap: 20px;
 }
 
+/* Only for Interior & Exterior Add-Ons */
 .addon-section label {
   display: flex;
-  flex-direction: row-reverse;   
+  flex-direction: row;   /* normal flow: text left, checkbox right */
   align-items: center;
-  gap: 10px;               /* spacing between checkbox & text */
+  gap: 10px;               
   background: #161616;
   padding: 10px 12px;
   border-radius: 10px;
@@ -176,12 +248,57 @@ footer { text-align:center; padding:40px; border-top:1px solid #222; color:var(-
 }
 
 
+
 .addon-section label:hover {
   background: #1c1c1c;
 }
 .addon-section label span {
   flex: 1;
   line-height: 1.4;
+}
+.package.luxury-finish {
+  border: 2px solid #ffd700; /* Gold color to make it stand out */
+  background: #1f1f1f;
+  box-shadow: 0 15px 30px rgba(255, 215, 0, 0.4);
+}
+.package.luxury-finish .badge {
+  background: #ffd700;
+  color: #000;
+  font-weight: bold;
+}
+/* Make all addon labels Right-to-Left */
+.addon-section label {
+  flex-direction: row-reverse;
+  justify-content: space-between;
+  text-align: right;
+}
+
+/* Keep text readable and aligned */
+.addon-section label span {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Ensure checkbox stays on the far right */
+.addon-section input[type="checkbox"] {
+  margin-left: 8px;
+  margin-right: 0;
+}
+/* Calculator hidden state */
+.calculator.hidden {
+  display: none;
+}
+
+/* Disabled state (after opening) */
+.calculator.disabled {
+  opacity: 0.45;
+  pointer-events: none;
+}
+
+/* Allow checkbox to work even when disabled */
+.calculator.disabled #agreement {
+  pointer-events: auto;
 }
 
 </style>
@@ -196,15 +313,30 @@ footer { text-align:center; padding:40px; border-top:1px solid #222; color:var(-
   </video>
   <div class="hero-content">
     <h1>Reset <span class="accent">Auto Details</span></h1>
-    <p>Mobile Detailing • Clean. Reset. Repeat.</p>
+    <p>Professional Detailing Made Easy</p>
     <a href="tel:7736917623" class="btn">Call Now</a>
+   <a href="sms:7736917623" class="btn msg-btn">Message To Book</a>
   </div>
 </section>
 
 <!-- ABOUT -->
+<!-- ABOUT -->
 <section>
-  <h2>Mobile Detailing in <span class="accent">Cook County</span></h2>
-  <p>Professional mobile detailing brought directly to you.</p>
+  <h2>
+    Mobile Detailing in <span class="accent">Cook County</span>
+  </h2>
+
+  <p style="max-width: 750px; margin-top: 12px;">
+    Reset Auto Details provides professional <strong>mobile auto detailing</strong>
+    throughout Cook County — bringing high-quality interior and exterior services
+    directly to your driveway, workplace, or apartment complex.
+  </p>
+
+  <p style="max-width: 750px; margin-top: 10px; color: var(--gray);">
+    We focus on deep cleaning, long-lasting results, and convenience.
+    Whether your vehicle needs a quick refresh or a full reset,
+    we deliver professional results without the shop wait.
+  </p>
 </section>
 
 <!-- PACKAGES -->
@@ -212,7 +344,7 @@ footer { text-align:center; padding:40px; border-top:1px solid #222; color:var(-
   <h2>Detailing Packages</h2>
   <div class="packages">
     <!-- EXTERIOR RESET -->
-    <div class="package" data-package="20">
+    <div class="package" data-package="40">
       <h3>Exterior Reset</h3>
       <p>Professional exterior-only detail.</p>
       <details>
@@ -221,56 +353,133 @@ footer { text-align:center; padding:40px; border-top:1px solid #222; color:var(-
           <li>Pre wash</li>
           <li>Hand wash & hand dry</li>
           <li>Glass & door jambs cleaned</li>
-          <li>Tire shine</li>
+          <li>Tires shined</li>
         </ul>
       </details>
-      <p><strong>Starting at $20</strong></p>
+      <p><strong>Starting at $40</strong></p>
     </div>
     <!-- INTERIOR RESET -->
-    <div class="package" data-package="50">
+    <div class="package" data-package="65">
       <h3>Interior Reset</h3>
-      <p>Deep interior refresh.</p>
+      <p> Professional interior-only detail.</p>
       <details>
         <summary>View what's included</summary>
         <ul>
-          <li>All surfaces cleaned and wiped down</li>
           <li>Clean floor mats</li>
+           <li>Full vacuum finish</li>
           <li>Scrub carpet and seats</li>
-          <li>Interior glass & doors cleaned</li>
-          <li>Matte finish</li>
+          <li>Interior glass & doors cleansed</li>
         </ul>
       </details>
-      <p><strong>Starting at $50</strong></p>
+      <p><strong>Starting at $65</strong></p>
     </div>
-    <!-- FULL RESET -->
-    <div class="package full-reset" data-package="70">
-      <h3>Full Reset <span class="badge">BEST VALUE • SAVE $$</span></h3>
-      <p>Complete interior & exterior detail.</p>
-      <p>Includes everything in <strong>Exterior Reset</strong> + <strong>Interior Reset</strong>.</p>
-      <p><strong>Starting at $70</strong></p>
+   <!-- FULL RESET -->
+<div class="package full-reset" data-package="70">
+  <h3>Full Reset <span class="badge">BEST VALUE</span></h3>
+  <p>Complete interior & exterior detail.</p>
+  <p>Includes everything in <strong>Exterior Reset</strong> + <strong>Interior Reset</strong>.</p>
+
+  <!-- Add a details section -->
+  <details>
+    <summary>View what's included</summary>
+    <ul>
+       <li>Pre wash</li>
+          <li>Hand wash & hand dry</li>
+          <li>Glass & door jambs cleaned</li>
+          <li>Tires shined</li>     
+    <li>All surfaces cleansed</li>
+          <li>Clean floor mats</li>
+           <li>Full vacuum finish</li>
+          <li>Scrub carpet and seats</li>
+          <li>Interior glass & doors cleansed</li>
+    </ul>
+  </details>
+
+  <p><strong>Starting at $70</strong></p>
+</div>
+
+    <!-- LUXURY FINISH -->
+<div class="package luxury-finish" data-package="155">
+  <h3>Luxury Finish <span class="badge">ULTIMATE DETAIL</span></h3>
+  <p>Complete interior & exterior detail with premium add-ons.</p>
+  <p>Includes everything in <strong>Full Reset</strong> + <strong>Seat & Carpet Shampoo</strong>, <strong>Protective Wax</strong>, <strong>Steam Cleanse</strong>.</p>
+  <p><strong>Starting at $155</strong></p>
+</div>
+
+  </div>
+</section>
+<!-- REFERRAL PROGRAM -->
+<section>
+  <h2>
+    Refer a Friend, <span class="accent">Get $25</span>
+  </h2>
+
+  <p style="max-width: 750px; margin-top: 12px;">
+    Love the results? Share Reset Auto Details with a friend.
+    When they book a detail, <strong>you both receive a $25 credit</strong>
+    toward your next service.
+  </p>
+
+  <div style="margin-top: 25px; display: grid; gap: 18px; max-width: 750px;">
+    <div style="display: flex; gap: 12px;">
+      <i class="fas fa-user-plus" style="color: var(--red); font-size: 1.2rem;"></i>
+      <p>
+        Refer a friend, family member, or coworker
+      </p>
     </div>
+
+    <div style="display: flex; gap: 12px;">
+      <i class="fas fa-car" style="color: var(--red); font-size: 1.2rem;"></i>
+      <p>
+        They book any detailing package
+      </p>
+    </div>
+
+    <div style="display: flex; gap: 12px;">
+      <i class="fas fa-dollar-sign" style="color: var(--red); font-size: 1.2rem;"></i>
+      <p>
+        You both get <strong>$25 off</strong> your next detail
+      </p>
+    </div>
+  </div>
+
+  <p style="margin-top: 18px; font-size: 0.9rem; color: var(--gray);">
+    Credits are applied at booking — just mention the referral name.
+  </p>
+
+  <div style="margin-top: 20px;">
+    <a href="sms:7736917623" class="btn" style="background:#fff;color:#000;">
+      Text Us to Refer
+    </a>
   </div>
 </section>
 
 <!-- CALCULATOR -->
 <section>
-<h2>Instant Price Estimate</h2>
-<div class="calculator disabled" id="calculator">
+<div class="estimate-wrapper">
+
+  <button class="estimate-toggle" type="button">
+    Instant Price Calculator 
+    <span>Click to see an estimate price in seconds *Price could change after quote</span>
+  </button>
+
+<div class="calculator hidden disabled" id="calculator">
   <div class="calc-group">
     <label class="agreement-box">
       <input type="checkbox" id="agreement">
-      I agree to provide water & electricity (required)
+      I agree to provide water & electricity for the detail (required)
     </label>
   </div>
 
   <div class="calc-group">
     <label>Package</label>
-    <select id="package">
-      <option value="0">Select</option>
-      <option value="30">Exterior Reset</option>
-      <option value="55">Interior Reset</option>
-      <option value="70">Full Reset</option>
-    </select>
+   <select id="package">
+  <option value="0">Select</option>
+  <option value="30">Exterior Reset</option>
+  <option value="55">Interior Reset</option>
+  <option value="70">Full Reset</option>
+ <option value="155">Luxury Finish</option>
+</select>
   </div>
 
   <div class="calc-group">
@@ -278,7 +487,7 @@ footer { text-align:center; padding:40px; border-top:1px solid #222; color:var(-
     <select id="size">
       <option value="1">Sedan</option>
       <option value="1.15">Small Truck/Small SUV</option>
-      <option value="1.2">Large Truck/Large SUV</option>
+      <option value="1.25">Large Truck/Large SUV</option>
     </select>
   </div>
 
@@ -286,8 +495,8 @@ footer { text-align:center; padding:40px; border-top:1px solid #222; color:var(-
     <label>Condition</label>
     <select id="condition">
       <option value="1">Light</option>
-      <option value="1.2">Moderate</option>
-      <option value="1.4">Heavy</option>
+      <option value="1.25">Moderate</option>
+      <option value="1.5">Heavy</option>
     </select>
   </div>
 
@@ -299,26 +508,35 @@ footer { text-align:center; padding:40px; border-top:1px solid #222; color:var(-
 
     <label>
       <span>
-        <input type="checkbox" class="addon" value="40">
+        <input type="checkbox" class="addon" value="65" data-included="luxury">
         Seat & Carpet Shampoo
       </span>
       <span class="best-seller">BEST SELLER</span>
     </label>
+    
+ <label>
+  <span>
+    <input type="checkbox" class="addon" value="45" data-included="luxury">
+    Steam Cleanse
+  </span>
+  <span class="best-seller">BEST SELLER</span>
+</label>
 
+    
+     <label>
+      <input type="checkbox" class="addon" value="35">
+      Leather Seat Coditioner
+    </label>
     <label>
       <input type="checkbox" class="addon" value="30">
       Stain Removal
     </label>
 
     <label>
-      <input type="checkbox" class="addon" value="40">
-      Steam Cleanse
-    </label>
-
-    <label>
-      <input type="checkbox" class="addon" value="40">
+      <input type="checkbox" class="addon" value="35">
       Pet Hair Removal
     </label>
+    
   </div>
 
   <!-- EXTERIOR ADDONS -->
@@ -327,19 +545,19 @@ footer { text-align:center; padding:40px; border-top:1px solid #222; color:var(-
 
     <label>
       <span>
-        <input type="checkbox" class="addon" value="25">
+        <input type="checkbox" class="addon" value="35" data-included="luxury">
         Protective Wax
       </span>
       <span class="best-seller">BEST SELLER</span>
     </label>
 
     <label>
-      <input type="checkbox" class="addon" value="25">
+      <input type="checkbox" class="addon" value="35">
       Fender Plastic Restoration
     </label>
 
     <label>
-      <input type="checkbox" class="addon" value="30">
+      <input type="checkbox" class="addon" value="35">
       Engine Bay Cleanse
     </label>
 
@@ -347,7 +565,10 @@ footer { text-align:center; padding:40px; border-top:1px solid #222; color:var(-
       <input type="checkbox" disabled>
       Truck Bed Restoration
     </label>
-
+<label class="locked-addon">
+      <input type="checkbox" disabled>
+      Headlight Restoration
+    </label>
     <label class="locked-addon">
       <input type="checkbox" disabled>
       Paint Correction
@@ -363,29 +584,57 @@ footer { text-align:center; padding:40px; border-top:1px solid #222; color:var(-
       Window Tint
     </label>
   </div>
-
-</div>
-
-
   <div class="price-output" id="price">$0</div>
 </div>
+    </div>
 </section>
 
 <!-- CONTACT -->
+<!-- CONTACT -->
 <section>
-  <h2>Contact</h2>
-  <div class="socials">
-    <a href="https://www.instagram.com/resetautodetails" target="_blank"><i class="fab fa-instagram"></i></a>
-    <a href="https://www.facebook.com/profile.php?id=61585466470226" target="_blank"><i class="fab fa-facebook"></i></a>
-    <a href="https://www.tiktok.com/@diegosautodetails" target="_blank"><i class="fab fa-tiktok"></i></a>
+  <h2>Get in Touch</h2>
+
+  <p style="max-width: 700px; margin: 12px auto 25px; color: var(--gray);">
+    Have questions, want to book a detail, or need a custom quote?
+    Reach out directly — we respond fast and make scheduling easy.
+  </p>
+
+  <div class="socials" style="justify-content: center;">
+    <a href="https://www.instagram.com/resetautodetails" target="_blank" aria-label="Instagram">
+      <i class="fab fa-instagram"></i>
+    </a>
+    <a href="https://www.facebook.com/profile.php?id=61585466470226" target="_blank" aria-label="Facebook">
+      <i class="fab fa-facebook"></i>
+    </a>
+    <a href="https://www.tiktok.com/@diegosautodetails" target="_blank" aria-label="TikTok">
+      <i class="fab fa-tiktok"></i>
+    </a>
+  </div>
+
+  <p style="margin-top: 20px; font-size: 0.9rem; color: var(--gray);">
+    Prefer texting or calling? We’re happy to help.
+  </p>
+
+  <div style="margin-top: 15px;">
+    <a href="tel:7736917623" class="btn">Call Now</a>
+    <a href="sms:7736917623" class="btn" style="background:#fff;color:#000;margin-left:10px;">
+      Text Us
+    </a>
   </div>
 </section>
+
 
 <footer>© 2025 Reset Auto Details</footer>
 
 <script>
-const agreement = document.getElementById('agreement');
-const calculator = document.getElementById('calculator');
+
+  const agreement = document.getElementById('agreement');
+  const calculatorBox = document.getElementById('calculator');
+
+  agreement.addEventListener('change', () => {
+    calculatorBox.classList.toggle('disabled', !agreement.checked);
+  });
+
 const pkgSelect = document.getElementById('package');
 const sizeSelect = document.getElementById('size');
 const conditionSelect = document.getElementById('condition');
@@ -409,12 +658,26 @@ function calculate() {
   total *= Number(sizeSelect.value) || 1;
   total *= Number(conditionSelect.value) || 1;
 
+  const isLuxury = pkgSelect.value === "155";
+
   addons.forEach(addon => {
-    if (addon.checked) total += Number(addon.value) || 0;
+    const includedInLuxury = addon.dataset.included === "luxury";
+
+    if (isLuxury && includedInLuxury) {
+      // Auto-check & disable included addons
+      addon.checked = true;
+      addon.disabled = true;
+    } else {
+      addon.disabled = false;
+      if (addon.checked) {
+        total += Number(addon.value) || 0;
+      }
+    }
   });
 
   priceOutput.textContent = "$" + Math.round(total);
 }
+
 
 // Recalculate whenever inputs change
 [pkgSelect, sizeSelect, conditionSelect, ...addons].forEach(el => {
@@ -444,15 +707,32 @@ detailsElements.forEach(detail => {
     }
   });
 });
+// inside your existing script
+
+function updateLuxuryAddons() {
+  const isLuxury = pkgSelect.options[pkgSelect.selectedIndex].text.includes("Luxury Finish");
+  const luxuryAddons = document.querySelectorAll('.addon[data-included="luxury"]');
+
+  luxuryAddons.forEach(addon => {
+    addon.checked = isLuxury;      // automatically check them
+    addon.disabled = isLuxury;     // disable so user can't uncheck
+  });
+
+  calculate(); // recalc price
+}
+
+// run this whenever package changes
+pkgSelect.addEventListener('change', updateLuxuryAddons);
 
 </script>
+ <script>
+  const toggleBtn = document.querySelector('.estimate-toggle');
+  const calculator = document.getElementById('calculator');
 
-
-
-
-</body>
-</html>
-
+  toggleBtn.addEventListener('click', () => {
+    calculator.classList.toggle('hidden');
+  });
+</script>
 
 
 
